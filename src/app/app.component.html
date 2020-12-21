@@ -7,7 +7,7 @@
     <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
     <div>
       <audio *ngIf="!isRecording && blobUrl" controls>
-        <source [src]="blobFile" type="audio/webm">
+        <source [src]="blobUrl" type="audio/webm">
       </audio>
 
     </div>
