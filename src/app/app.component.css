@@ -1,4 +1,26 @@
 
+.background-color {
+  background-color: #d9d4ff;
+}
+
+.box {
+	position: absolute;
+  top: 45%;
+  left: 45%;
+
+}
+
+.button {
+	width: 120px;
+  height: 120px;
+  border: 1px wheat solid;
+	border-radius: 50%;
+  background: white;
+
+	/* box-shadow: 0px 0px 80px #0084F9; */
+	position: absolute;
+}
+
 .start-button {
   background-color: #7ffe9f; /* Green */
   border: none;

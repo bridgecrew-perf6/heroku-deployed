@@ -34,7 +34,6 @@ export class AudioRecordService {
     return this.getRecordingFailed.asObservable();
   }
 
-
   startRecording(): void {
 
     if (this.recorder) {
@@ -92,7 +91,7 @@ export class AudioRecordService {
     if (this.recorder) {
       this.recorder.stop((blob) => {
         if (this.startTime) {
-          const mp3Name = encodeURIComponent('audio_' + new Date().getTime() + '.mp3');
+          const mp3Name = encodeURIComponent('audio_' + new Date().getTime() + '.wav');
           this.stopMedia();
           this.recorded.next({ blob, title: mp3Name });
         }
