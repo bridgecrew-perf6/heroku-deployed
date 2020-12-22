@@ -8,20 +8,16 @@ Cloudinary URL :
   {{ readingtext }}
 </h1>
 
-
-
-<div class="background-color">
-  <div class="box">
-
-    <button class="start-button" *ngIf="!isRecording && !blobUrl" (click)="startRecording()">Start Recording</button>
-    <button class="stop-button" *ngIf="isRecording && !blobUrl" (click)="stopRecording()">Stop Recording</button>
-    <button class="cancel-button" *ngIf="!isRecording && blobUrl" (click)="clearRecordedData()">Clear Recording</button>
-    <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
-    <div>
-      <audio *ngIf="!isRecording && blobUrl" controls>
-        <source [src]="blobUrl" type="audio/webm">
-      </audio>
-    </div>
+<div class="center">
+  <button class="start-button" *ngIf="!isRecording && !blobUrl" (click)="startRecording()">Start Recording</button>
+  <button class="stop-button" *ngIf="isRecording && !blobUrl" (click)="stopRecording()">Stop Recording</button>
+  <button class="cancel-button" *ngIf="!isRecording && blobUrl" (click)="clearRecordedData()">Clear Recording</button>
+  <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
+  <div>
+    <audio *ngIf="!isRecording && blobUrl" controls>
+      <source [src]="blobUrl" type="audio/webm">
+    </audio>
   </div>
 </div>
+
 
