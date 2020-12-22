@@ -34,21 +34,19 @@ export class AppComponent implements OnDestroy {
 
     this.audioRecordingService.getRecordedBlob().subscribe((data) => {
       console.log(data.blob)
-      this.blobUrl = this .sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data.blob));
+      // this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data.blob));
       // this.blobUrl = URL.createObjectURL(data.blob);
-      // this.blobUrl = data.blob;
-      this.blobTitle = data.title;
-      // this.blobfile = this.blobToFile(this.blobUrl, this.blobTitle);
-      console.log(this.blobfile);
 
       const form = new FormData();
       form.append('blobfile', data.blob);
-      this.http.post<any>('http://127.0.0.1:5000/media', form)
+      form.append('blobtitle', data.title);
+      this.http.post<any>('http://127.0.0.1:5000', form)
       .pipe(
         map(response => response),
         catchError(error => throwError(error))
       )
       .subscribe(
+        (message) => alert(message.status)
       );
       // this.blobTitle = data.title;
       // saveAs(this.blobUrl, this.blobTitle);

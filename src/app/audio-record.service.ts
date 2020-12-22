@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as RecordRTC from 'recordrtc';
 import * as moment from 'moment';
 import { Observable, Subject } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 interface RecordedAudioOutput {
   blob: Blob;
@@ -12,7 +13,7 @@ interface RecordedAudioOutput {
 @Injectable()
 export class AudioRecordService {
 
-
+  private datePipeString: string;
   private stream;
   private recorder;
   private interval;
@@ -21,6 +22,9 @@ export class AudioRecordService {
   private recordingTime = new Subject<string>();
   private getRecordingFailed = new Subject<string>();
 
+  constructor(private datePipe: DatePipe){
+
+  }
 
   getRecordedBlob(): Observable<RecordedAudioOutput> {
     return this.recorded.asObservable();
@@ -56,7 +60,6 @@ export class AudioRecordService {
   }
 
   private record(): void {
-
     this.recorder = new RecordRTC.StereoAudioRecorder(this.stream, {
       type: 'audio',
       mimeType: 'audio/webm'
@@ -91,7 +94,8 @@ export class AudioRecordService {
     if (this.recorder) {
       this.recorder.stop((blob) => {
         if (this.startTime) {
-          const mp3Name = encodeURIComponent('audio_' + new Date().getTime() + '.wav');
+          this.datePipeString = this.datePipe.transform(Date.now(), 'd-M-yyyy_h-mm-ss');
+          const mp3Name = encodeURIComponent(this.datePipeString);
           this.stopMedia();
           this.recorded.next({ blob, title: mp3Name });
         }

@@ -1,0 +1,6 @@
+Flask==1.1.2
+gunicorn==20.0.4
+Flask-PyMongo==2.3.0
+scipy==1.5.2
+cloudinary==1.23.0 
+sounddevice==0.4.1

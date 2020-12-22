@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,7 +18,7 @@ import { SvgComponent } from './svg/svg.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [AudioRecordService],
+  providers: [AudioRecordService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
