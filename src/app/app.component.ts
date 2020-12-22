@@ -54,8 +54,6 @@ export class AppComponent implements OnDestroy {
           this.ReadingText();
         }
       );
-      // this.blobTitle = data.title;
-      // saveAs(this.blobUrl, this.blobTitle);
     });
   }
 
@@ -94,7 +92,6 @@ export class AppComponent implements OnDestroy {
     const text = ['คุณกินข้าวหรือยัง', 'ยังไม่ได้กินเลย', 'ลองกินไข่ทอดไหม', 'อยากกินข้าวแล้วครับ', 'พักเที่ยงกันก่อนไหม', 'เหนื่อยก็พักก่อนนะครับ' ];
     const randomText = Math.floor(Math.random() * text.length);
     this.readingtext = text[randomText];
-    // return randomText;
   }
 
   ngOnDestroy(): void {

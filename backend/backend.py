@@ -47,8 +47,7 @@ def home():
 
   return jsonify({
     "status": "บันทึกสำเร็จ",
-    "url": "{}".format(media_url),
-    "prot": "{}".format(port)
+    "url": "{}".format(media_url)
     })
 
 
