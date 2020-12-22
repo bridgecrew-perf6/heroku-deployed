@@ -4,6 +4,7 @@ import cloudinary as Cloudinary
 import cloudinary.uploader as CloudUploader
 from mongo import MongoConnector
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -20,6 +21,8 @@ Cloudinary.config(
 
 @app.route('/',methods=['GET','POST'])
 def home():
+  print('port: %s' % request.host)
+
   # request form #
   media = request.files['blobfile']
   blobtitle = request.form.get('blobtitle')
@@ -49,5 +52,6 @@ def home():
 
 
 if __name__ == "__main__":
-  app.run(debug=True,port=8080)
+  app.run(debug=True,port = int(os.environ.get('PORT', 5000))
+)
 
