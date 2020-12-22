@@ -42,7 +42,7 @@ export class AppComponent implements OnDestroy {
       const form = new FormData();
       form.append('blobfile', data.blob);
       form.append('blobtitle', data.title);
-      this.http.post<any>('http://127.0.0.1:5000', form)
+      this.http.post<any>('http://127.0.0.1:8080', form)
       .pipe(
         map(response => response),
         catchError(error => throwError(error))
