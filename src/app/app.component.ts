@@ -51,6 +51,7 @@ export class AppComponent implements OnDestroy {
         (message) => {
           alert(message.status),
           this.blobUrl = message.url;
+          this.ReadingText();
         }
       );
       // this.blobTitle = data.title;
