@@ -21,7 +21,7 @@ Cloudinary.config(
 
 @app.route('/',methods=['GET','POST'])
 def home():
-  print('port: %s' % request.host)
+  port = 'port: %s' % request.host
 
   # request form #
   media = request.files['blobfile']
@@ -47,7 +47,8 @@ def home():
 
   return jsonify({
     "status": "บันทึกสำเร็จ",
-    "url":"{}".format(media_url)
+    "url": "{}".format(media_url),
+    "prot": "{}".format(port)
     })
 
 
