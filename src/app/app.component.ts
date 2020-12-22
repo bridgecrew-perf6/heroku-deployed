@@ -33,7 +33,6 @@ export class AppComponent implements OnDestroy {
     });
 
     this.audioRecordingService.getRecordedBlob().subscribe((data) => {
-      console.log(data.blob)
       // this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data.blob));
       // this.blobUrl = URL.createObjectURL(data.blob);
 
@@ -46,7 +45,10 @@ export class AppComponent implements OnDestroy {
         catchError(error => throwError(error))
       )
       .subscribe(
-        (message) => alert(message.status)
+        (message) => {
+          alert(message.status),
+          this.blobUrl = message.url;
+        }
       );
       // this.blobTitle = data.title;
       // saveAs(this.blobUrl, this.blobTitle);

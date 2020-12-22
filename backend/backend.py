@@ -28,7 +28,7 @@ def home():
   title = "{}".format(blobtitle)
 
   # upload to cloudinary #
-  result = CloudUploader.upload(media, resource_type = "video" ,public_id="media/{}".format(title))
+  result = CloudUploader.upload(media, resource_type = "video" ,public_id="audio/{}".format(title))
 
   # generate url link #
   media_url = result["secure_url"]
@@ -42,7 +42,10 @@ def home():
   # insert data to database #
   db.sound_files.insert_one(insert_temp)
 
-  return jsonify({"status": "บันทึกสำเร็จ"})
+  return jsonify({
+    "status": "บันทึกสำเร็จ",
+    "url":"{}".format(media_url)
+    })
 
 
 if __name__ == "__main__":
